@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import DataTable from "./Table.js";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [database, setDatabase] = useState([]);
+
+	useEffect(() => {
+		getData();
+		async function getData() {
+			const response = await fetch("test.csv");
+			const data = await response.text();
+
+			// console.log(data);
+			const table = data.split("\n").slice(1);
+
+			// console.log(rows);
+			const col = [];
+			table.forEach((record) => {
+				const row = record.split(",");
+				col.push(row);
+			});
+
+			setDatabase(col);
+			// console.log(col);
+		}
+	}, []);
+
+	return (
+		<div className="App">
+			<h1> Praan js </h1>
+			<DataTable data={database} />
+		</div>
+	);
 }
 
 export default App;
