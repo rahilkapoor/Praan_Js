@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import DataTable from "./Table.js";
+import moment from "moment";
 
 function App() {
 	const [database, setDatabase] = useState([]);
@@ -18,11 +19,25 @@ function App() {
 			const col = [];
 			table.forEach((record) => {
 				const row = record.split(",");
+				var string = row[1] + " " + row[2];
+				// console.log(string);
+
+				let m = moment(string, "DD/MM/YYYY hh:mm:ss");
+				var date = m.toString().split(" ");
+
+				var day, month, tarik, year, time;
+				day = date[0];
+				month = date[1];
+				tarik = date[2];
+				year = date[3];
+				time = date[4];
+				row[1] = tarik + " " + month + " " + year;
+				row[2] = time;
+
 				col.push(row);
 			});
 
 			setDatabase(col);
-			// console.log(col);
 		}
 	}, []);
 
