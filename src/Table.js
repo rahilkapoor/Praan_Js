@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -9,9 +9,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 
+// This Table was imported from Material UI for better visualization
+
 const columns = [
 	{ id: "device", label: "Device", minWidth: 30, index: 0 },
-	{ id: "date", label: "Day/Month/Year", minWidth: 30, index: 1 },
+	{ id: "date", label: "Date", minWidth: 30, index: 1 },
 	{ id: "time", label: "Time", minWidth: 30, index: 2 },
 	{
 		id: "windspeed",
@@ -21,11 +23,12 @@ const columns = [
 		index: 3,
 	},
 	{ id: "direction", label: "Direction", minWidth: 30, index: 4 },
-	{ id: "p1", label: "P1", minWidth: 30, index: 5 },
-	{ id: "p2.5", label: "P2.5", minWidth: 30, index: 6 },
-	{ id: "p10", label: "P10", minWidth: 30, index: 7 },
+	{ id: "p1", label: "PM 1.0", minWidth: 30, index: 5 },
+	{ id: "p2.5", label: "PM 2.5", minWidth: 30, index: 6 },
+	{ id: "p10", label: "PM 10", minWidth: 30, index: 7 },
 ];
 
+// Styles for the Table
 const useStyles = makeStyles({
 	root: {
 		width: "100%",

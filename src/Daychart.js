@@ -1,17 +1,15 @@
-import { useState, useEffect } from "react";
-import moment from "moment";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 const Daychart = ({ chartdata }) => {
-	const [database, setDatabase] = useState([]);
 	const labels = [];
 	const data_p1 = [],
 		data_p2 = [],
 		data_p3 = [];
-	useEffect(() => {
-		setDatabase(chartdata);
-	}, []);
 
+	// We need to put all the data from the table into individual array for
+	// representation and forming a graph
+	//
+	// So we put data for each particle in different array
 	function refactorData() {
 		for (var i = 0; i < chartdata.length; i++) {
 			labels.push(chartdata[i][2]);
@@ -31,15 +29,15 @@ const Daychart = ({ chartdata }) => {
 						{
 							label: "PM 1 Particle",
 							data: data_p1,
-							backgroundColor: "rgba(255, 99, 132, 0.2)",
-							borderColor: "rgb(255, 99, 132)",
+							backgroundColor: "rgba(255, 205, 86, 0.2)",
+							borderColor: "rgb(255, 205, 86)",
 							borderWidth: 1,
 						},
 						{
 							label: "PM 2.5 Particle",
 							data: data_p2,
-							backgroundColor: "rgba(75, 192, 192, 0.2)",
-							borderColor: "rgb(75, 192, 192)",
+							backgroundColor: "rgba(255, 99, 132, 0.2)",
+							borderColor: "rgb(255, 99, 132)",
 							borderWidth: 1,
 						},
 						{
